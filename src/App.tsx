@@ -4,9 +4,9 @@ import LinkedIn from './svg/LinkedIn'
 function App() {
   return (
     <div className="p-2 flex justify-center h-screen">
-      <div className="flex flex-col items-center gap-5 mt-[15vh]">
+      <div className="flex flex-col items-center gap-6 mt-[15vh]">
         <h1 className="text-center text-4xl font-medium">Brendon Hablutzel</h1>
-        <h2 className="text-lg text-gray-600">
+        <h2 className="text-lg text-gray-600 tracking-wide">
           CS @ <a href="https://csc.ncsu.edu/">NC State</a> | SWE Intern @{' '}
           <a href="https://lucid.co/">Lucid</a>
         </h2>
