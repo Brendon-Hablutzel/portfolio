@@ -1,3 +1,3 @@
-# Homepage
+# Portfolio Template
 
-Basic portfolio website using React and Tailwindcss.
+Template for a personal portfolio with social links and projects/experience.
