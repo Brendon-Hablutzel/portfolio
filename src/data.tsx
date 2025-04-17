@@ -15,7 +15,7 @@ export const currentPositions: Position[] = [
     url: 'https://csc.ncsu.edu',
   },
   {
-    name: 'Incoming SWE Intern @ Lucid',
+    name: 'SWE Intern @ Lucid',
     url: 'https://lucid.co',
   },
 ]

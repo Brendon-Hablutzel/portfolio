@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'motion/react'
 import { fullName, socials, tags, Work, works, WorkType } from '../data'
+import { Link } from 'react-router'
 
 const variants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.3 } },
+  animate: { opacity: 1, transition: { delay: 0.1, duration: 0.3 } },
   exit: { opacity: 0, transition: { duration: 0.2 } },
 }
 
@@ -24,8 +25,11 @@ const WorkComponent = ({ work }: { work: Work }) => {
       {/* TODO: perhaps tracking-wide */}
       <h3 className="text-gray-600">{work.description}</h3>
       <div className="flex justify-start gap-2">
-        {work.tags.map((tag) => (
-          <div className="text-xs text-green-900 bg-green-200 w-fit py-1 px-2 rounded-xl">
+        {work.tags.map((tag, idx) => (
+          <div
+            key={idx}
+            className="text-xs text-green-900 bg-green-200 w-fit py-1 px-2 rounded-xl"
+          >
             {tag}
           </div>
         ))}
@@ -91,10 +95,10 @@ const WorksComponent = () => {
       <div className="sticky top-0 p-2 flex justify-between w-full">
         <div>
           {/* <a href="/" className="group transition duration-300"> */}
-          <a href="/">
+          <Link to="/">
             <h2 className="font-medium">{fullName}</h2>
             {/* <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black"></span> */}
-          </a>
+          </Link>
         </div>
         <div className="flex justify-between gap-2">
           {socials.map((social, idx) => (

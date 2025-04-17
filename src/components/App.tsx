@@ -1,5 +1,5 @@
+import { Link } from 'react-router'
 import { currentPositions, fullName, socials } from '../data'
-
 import { motion } from 'motion/react'
 
 const nameVariants = {
@@ -21,6 +21,7 @@ const containerVariants = {
   show: {
     opacity: 1,
     transition: {
+      delayChildren: 0.25,
       staggerChildren: 0.2,
     },
   },
@@ -37,7 +38,7 @@ const linkVariants = {
 
 const App = () => {
   return (
-    <div className={`w-screen overflow-hidden`}>
+    <div className={`h-max-screen w-screen overflow-hidden`}>
       <div className="p-2 flex flex-col items-center h-[100vh]">
         <div className="flex flex-col items-center gap-6 mt-[30vh]">
           <motion.h1
@@ -52,47 +53,48 @@ const App = () => {
             variants={subtitleVariants}
             initial="hidden"
             animate="show"
-            className="text-lg text-gray-600 tracking-wide"
+            className="text-lg text-gray-600 tracking-wide text-center"
           >
             {currentPositions.map((position, idx) => (
-              <>
+              <span key={idx}>
                 {position.url ? (
-                  <a href={position.url} target="_blank">
+                  <Link to={position.url} target="_blank">
                     {position.name}
-                  </a>
+                  </Link>
                 ) : (
                   <span>{position.name}</span>
                 )}
                 {idx < currentPositions.length - 1 ? ' | ' : null}
-              </>
+              </span>
             ))}
           </motion.h2>
           <motion.div
-            className="flex justify-between gap-4"
+            className="flex justify-between gap-2 lg:gap-4"
             variants={containerVariants}
             initial="hidden"
             animate="show"
           >
             {socials.map((social, idx) => (
               <motion.a
-                key={idx}
                 href={social.url}
-                variants={linkVariants}
                 target="_blank"
-                className="hover:shadow-md transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-2 px-3 rounded-xl"
+                key={idx}
+                variants={linkVariants}
+                className="flex items-center gap-2 text-sm lg:text-base hover:shadow-md transition-shadow duration-200 select-none text-gray-700  border-[1px] border-black/20 py-2 px-3 rounded-xl"
               >
                 {social.type}
-                <div className="w-6 h-6">{social.iconComponent}</div>
+                <div className="md:w-6 md:h-6 w-5 h-5">
+                  {social.iconComponent}
+                </div>
               </motion.a>
             ))}
-            <motion.a
+            <motion.div
               key={2}
               variants={linkVariants}
-              href="/work"
-              className="hover:shadow-lg transition-shadow duration-200 hover:cursor-pointer text-white bg-black px-3 py-2 rounded-xl font-light"
+              className="text-sm lg:text-base hover:shadow-lg transition-shadow duration-200 hover:cursor-pointer text-white bg-black px-3 py-2 rounded-xl font-light"
             >
-              See my work →
-            </motion.a>
+              <Link to="/work">See my work →</Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
