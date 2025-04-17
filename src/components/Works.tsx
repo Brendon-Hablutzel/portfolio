@@ -24,11 +24,11 @@ const WorkComponent = ({ work }: { work: Work }) => {
       </div>
       {/* TODO: perhaps tracking-wide */}
       <h3 className="text-gray-600">{work.description}</h3>
-      <div className="flex justify-start gap-2">
+      <div className="flex justify-start gap-2 overflow-x-scroll">
         {work.tags.map((tag, idx) => (
           <div
             key={idx}
-            className="text-xs text-green-900 bg-green-200 w-fit py-1 px-2 rounded-xl"
+            className="whitespace-nowrap text-xs text-green-900 bg-green-200 w-fit py-1 px-2 rounded-xl"
           >
             {tag}
           </div>
@@ -93,7 +93,7 @@ const WorksComponent = () => {
       exit="exit"
     >
       <div className="sticky top-0 p-2 flex justify-between w-full">
-        <div>
+        <div className="flex items-center">
           {/* <a href="/" className="group transition duration-300"> */}
           <Link to="/">
             <h2 className="font-medium">{fullName}</h2>
@@ -122,10 +122,10 @@ const WorksComponent = () => {
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 text-lg py-1 px-2 rounded-xl border-[1px] border-black/20"
+              className="flex-1 text-base sm:text-lg py-1 px-2 rounded-xl border-[1px] border-black/20 min-w-20"
             />
             <select
-              className="text-lg border-[1px] border-black/20 rounded-xl py-1 px-2"
+              className="text-base sm:text-lg border-[1px] border-black/20 rounded-xl py-1 px-2"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value as WorkType | '')}
             >
@@ -142,7 +142,7 @@ const WorksComponent = () => {
               return (
                 <label
                   key={idx}
-                  className={`whitespace-nowrap transition duration-150 ease-in-out ${tagSelected ? 'bg-gray-200  ' : ''} hover:cursor-pointer select-none border-[1px] border-black/20 py-0.5 px-2 rounded-xl`}
+                  className={`text-sm sm:text-base whitespace-nowrap transition duration-150 ease-in-out ${tagSelected ? 'bg-gray-200  ' : ''} hover:cursor-pointer select-none border-[1px] border-black/20 py-0.5 px-2 rounded-xl`}
                 >
                   <input
                     type="checkbox"

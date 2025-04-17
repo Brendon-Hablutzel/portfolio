@@ -58,9 +58,9 @@ const App = () => {
             {currentPositions.map((position, idx) => (
               <span key={idx}>
                 {position.url ? (
-                  <Link to={position.url} target="_blank">
+                  <a href={position.url} target="_blank">
                     {position.name}
-                  </Link>
+                  </a>
                 ) : (
                   <span>{position.name}</span>
                 )}
@@ -69,7 +69,7 @@ const App = () => {
             ))}
           </motion.h2>
           <motion.div
-            className="flex justify-between gap-2 lg:gap-4"
+            className="flex justify-between gap-2 md:gap-4"
             variants={containerVariants}
             initial="hidden"
             animate="show"
@@ -80,7 +80,7 @@ const App = () => {
                 target="_blank"
                 key={idx}
                 variants={linkVariants}
-                className="flex items-center gap-2 text-sm lg:text-base hover:shadow-md transition-shadow duration-200 select-none text-gray-700  border-[1px] border-black/20 py-2 px-3 rounded-xl"
+                className="flex items-center gap-2 text-sm md:text-base hover:shadow-md transition-shadow duration-200 select-none text-gray-700 border-[1px] border-black/20 py-2 px-3 rounded-xl"
               >
                 {social.type}
                 <div className="md:w-6 md:h-6 w-5 h-5">
@@ -91,9 +91,14 @@ const App = () => {
             <motion.div
               key={2}
               variants={linkVariants}
-              className="text-sm lg:text-base hover:shadow-lg transition-shadow duration-200 hover:cursor-pointer text-white bg-black px-3 py-2 rounded-xl font-light"
+              className="flex justify-center items-center text-sm md:text-base hover:shadow-lg transition-shadow duration-200 hover:cursor-pointer text-white bg-black rounded-xl font-light"
             >
-              <Link to="/work">See my work →</Link>
+              <Link
+                to="/work"
+                className="h-full w-full text-center flex items-center px-3 py-2"
+              >
+                See my work →
+              </Link>
             </motion.div>
           </motion.div>
         </div>
