@@ -1,5 +1,4 @@
-import GitHub from '../svg/GitHub'
-import LinkedIn from '../svg/LinkedIn'
+import { currentPositions, fullName, socials } from '../data'
 
 import { motion } from 'motion/react'
 
@@ -47,7 +46,7 @@ const App = () => {
             animate="show"
             className="text-center text-4xl font-medium"
           >
-            Brendon Hablutzel
+            {fullName}
           </motion.h1>
           <motion.h2
             variants={subtitleVariants}
@@ -55,14 +54,18 @@ const App = () => {
             animate="show"
             className="text-lg text-gray-600 tracking-wide"
           >
-            CS @{' '}
-            <a target="_blank" href="https://csc.ncsu.edu/">
-              NC State
-            </a>{' '}
-            | SWE Intern @{' '}
-            <a target="_blank" href="https://lucid.co/">
-              Lucid
-            </a>
+            {currentPositions.map((position, idx) => (
+              <>
+                {position.url ? (
+                  <a href={position.url} target="_blank">
+                    {position.name}
+                  </a>
+                ) : (
+                  <span>{position.name}</span>
+                )}
+                {idx < currentPositions.length - 1 ? ' | ' : null}
+              </>
+            ))}
           </motion.h2>
           <motion.div
             className="flex justify-between gap-4"
@@ -70,30 +73,18 @@ const App = () => {
             initial="hidden"
             animate="show"
           >
-            <motion.a
-              key={0}
-              href="https://github.com/Brendon-Hablutzel"
-              variants={linkVariants}
-              target="_blank"
-              className="hover:shadow-md transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-2 px-3 rounded-xl"
-            >
-              GitHub
-              <div className="w-6 h-6">
-                <GitHub />
-              </div>
-            </motion.a>
-            <motion.a
-              key={1}
-              variants={linkVariants}
-              href="https://www.linkedin.com/in/brendon-hablutzel"
-              target="_blank"
-              className="hover:shadow-md transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-2 px-3 rounded-xl"
-            >
-              LinkedIn
-              <div className="w-6 h-6">
-                <LinkedIn />
-              </div>
-            </motion.a>
+            {socials.map((social, idx) => (
+              <motion.a
+                key={idx}
+                href={social.url}
+                variants={linkVariants}
+                target="_blank"
+                className="hover:shadow-md transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-2 px-3 rounded-xl"
+              >
+                {social.type}
+                <div className="w-6 h-6">{social.iconComponent}</div>
+              </motion.a>
+            ))}
             <motion.a
               key={2}
               variants={linkVariants}

@@ -1,8 +1,6 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'motion/react'
-import GitHub from '../svg/GitHub'
-import LinkedIn from '../svg/LinkedIn'
-import { tags, Work, works, WorkType } from '../data'
+import { fullName, socials, tags, Work, works, WorkType } from '../data'
 
 const variants = {
   initial: { opacity: 0 },
@@ -93,31 +91,22 @@ const WorksComponent = () => {
         <div>
           {/* <a href="/" className="group transition duration-300"> */}
           <a href="/">
-            <h2 className="font-medium">Brendon Hablutzel</h2>
+            <h2 className="font-medium">{fullName}</h2>
             {/* <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black"></span> */}
           </a>
         </div>
         <div className="flex justify-between gap-2">
-          <a
-            href="https://github.com/Brendon-Hablutzel"
-            target="_blank"
-            className="text-sm hover:shadow-md transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
-          >
-            GitHub
-            <div className="w-4 h-4">
-              <GitHub />
-            </div>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/brendon-hablutzel"
-            target="_blank"
-            className="text-sm hover:shadow-md transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
-          >
-            LinkedIn
-            <div className="w-4 h-4">
-              <LinkedIn />
-            </div>
-          </a>
+          {socials.map((social, idx) => (
+            <a
+              key={idx}
+              href={social.url}
+              target="_blank"
+              className="text-sm hover:shadow-sm transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
+            >
+              {social.type}
+              <div className="w-4 h-4">{social.iconComponent}</div>
+            </a>
+          ))}
         </div>
       </div>
       <div className="w-[90%] max-w-[800px]">
