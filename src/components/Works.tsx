@@ -39,6 +39,7 @@ const WorksComponent = () => {
     Object.fromEntries(tags.map((tag) => [tag, false]))
   )
 
+  // TODO: push queries and other filters into the url as query params
   const [searchQuery, setSearchQuery] = useState('')
 
   const [selectedType, setSelectedType] = useState<WorkType | ''>('')
@@ -137,7 +138,7 @@ const WorksComponent = () => {
               return (
                 <label
                   key={idx}
-                  className={`transition duration-150 ease-in-out ${tagSelected ? 'bg-gray-200  ' : ''} hover:cursor-pointer select-none border-[1px] border-black/20 py-0.5 px-2 rounded-xl`}
+                  className={`whitespace-nowrap transition duration-150 ease-in-out ${tagSelected ? 'bg-gray-200  ' : ''} hover:cursor-pointer select-none border-[1px] border-black/20 py-0.5 px-2 rounded-xl`}
                 >
                   <input
                     type="checkbox"

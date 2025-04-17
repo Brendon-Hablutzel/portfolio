@@ -2,7 +2,7 @@ import { JSX } from 'react'
 import GitHub from './svg/GitHub'
 import LinkedIn from './svg/LinkedIn'
 
-export const fullName = 'My Name'
+export const fullName = 'Brendon Hablutzel'
 
 export interface Position {
   name: string
@@ -11,11 +11,12 @@ export interface Position {
 
 export const currentPositions: Position[] = [
   {
-    name: 'A position',
-    url: 'https://google.com',
+    name: 'CS @ NC State',
+    url: 'https://csc.ncsu.edu',
   },
   {
-    name: 'Another position',
+    name: 'Incoming SWE Intern @ Lucid',
+    url: 'https://lucid.co',
   },
 ]
 
@@ -30,12 +31,12 @@ export interface Social {
 export const socials: Social[] = [
   {
     type: 'GitHub',
-    url: 'https://github.com',
+    url: 'https://github.com/Brendon-Hablutzel',
     iconComponent: <GitHub />,
   },
   {
     type: 'LinkedIn',
-    url: 'https://linkedin.com',
+    url: 'https://linkedin.com/in/brendon-hablutzel',
     iconComponent: <LinkedIn />,
   },
 ]
@@ -52,28 +53,156 @@ export interface Work {
 }
 
 export const works: Work[] = [
+  // projects:
   {
-    name: 'My project',
-    url: 'https://cloudflare.com',
-    description: 'An application I created',
+    name: 'NC State Library Busyness Tracker',
+    url: 'https://lib-occupancy.brendonhab.com/',
+    description:
+      'An AWS serverless-based system that captures real-time occupancy data for the libraries at NC State, uses that to predict future occupancy, and displays all this data with a React frontend',
     type: 'project',
-    tags: ['Tech A', 'Tech B'],
+    tags: ['AWS', 'TypeScript', 'React', 'Python', 'Tailwindcss'],
   },
   {
-    name: 'My experience',
-    dateRange: 'Jan 2025 - May 2025',
-    url: 'https://apple.com',
-    description: 'A place I worked',
+    name: 'Seg UI',
+    url: 'https://seg-ui.brendonhab.com/',
+    description:
+      'A full-stack web app that allows users to upload images and have them processed using one of several transformation or analysis modules',
+    type: 'project',
+    tags: [
+      'AWS',
+      'TypeScript',
+      'React',
+      'Python',
+      'Next.js',
+      'Tailwindcss',
+      'Docker',
+    ],
+  },
+  {
+    name: 'Raspberry Pi E-Ink Dashboard',
+    url: 'https://github.com/Brendon-Hablutzel/rpi-eink-dashboard',
+    description:
+      'Used Python to create an application that fetches data from various sources, generates images to summarize that data, and displays it on an E-ink display via a Raspberry Pi',
+    type: 'project',
+    tags: ['Python'],
+  },
+  {
+    name: 'Argus',
+    url: 'https://github.com/Brendon-Hablutzel/argus-backend',
+    description:
+      "An event-driven system that ingests data about the user's online habits via a Chrome extension, processes that data with Kafka, stores it in Timescale, and allows the user to view insights about their screen time at a website level via a frontend dashboard",
+    type: 'project',
+    tags: ['Scala', 'React', 'TypeScript', 'Docker'],
+  },
+  {
+    name: 'Hermes',
+    url: 'https://github.com/Brendon-Hablutzel/hermes',
+    description:
+      'A system for monitoring real-time data about infrastructure statuses that includes a live dashboard and integration with Prometheus and Grafana for observing status over time—deployed on Kubernetes',
+    type: 'project',
+    tags: [
+      'Go',
+      'Docker',
+      'Kubernetes',
+      'TypeScript',
+      'React',
+      'Next.js',
+      'Tailwindcss',
+    ],
+  },
+  {
+    name: 'Location-based guessing game for NC State',
+    url: 'https://github.com/NCSU-App-Development-Club/ncsuguessr',
+    description:
+      'Helped lead a team of 15 to build a geoguessr-inspired mobile game for locations at NC State',
+    type: 'project',
+    tags: ['TypeScript', 'React Native', 'AWS'],
+  },
+  {
+    name: 'Rust Crate for Sonos Speakers',
+    url: 'https://crates.io/crates/rusty-sonos',
+    description:
+      'Created and published a Rust crate that allows users to directly interact with Sonos speakers via the API they expose to the local network',
+    type: 'project',
+    tags: ['Rust'],
+  },
+  {
+    name: 'Rust Crate for wit.ai',
+    url: 'https://crates.io/crates/wit_ai_rs',
+    description:
+      'Created and published a Rust crate that provides access to the API for wit.ai, a cloud-based NLP service by Meta',
+    type: 'project',
+    tags: ['Rust'],
+  },
+  {
+    name: 'Python Library for NC State Courses',
+    url: 'https://pypi.org/project/ncsu-courses/',
+    description:
+      "Created and published a Python library that parses NC State's website to provide data about current and past course offerings",
+    type: 'project',
+    tags: ['Python'],
+  },
+  // experiences
+  {
+    name: 'Incoming SWE Intern @ Lucid',
+    dateRange: 'Starting May 2025',
+    url: 'https://lucid.go',
+    description:
+      'Will be working as a software engineering intern at Lucid Software during Summer 2025',
     type: 'experience',
-    tags: ['Tech B', 'Tech C'],
+    tags: [],
   },
   {
-    name: 'My other position',
-    url: 'https://stackoverflow.com',
-    description: 'Something else I was involved in',
+    name: 'Fullstack Software Engineering Intern @ Epic Hire',
+    dateRange: 'Jan 2025 - Apr 2025',
+    url: 'https://epichire.com',
+    description:
+      'Used a variety of frontend and backend technologies to build user-facing features for 10,000+ students and employers',
+    type: 'experience',
+    tags: ['TypeScript', 'React', 'Next.js', 'Java', 'Spring Boot'],
+  },
+  {
+    name: 'Backend Software Engineering Intern @ Carpool.School',
+    dateRange: 'May 2024 - Aug 2024',
+    url: 'https://carpool.school',
+    description:
+      'Worked with AWS backend infrastructure to build out analytics and billing features',
+    type: 'experience',
+    tags: ['AWS', 'TypeScript'],
+  },
+  {
+    name: 'Software Development Researcher',
+    dateRange: 'Jan 2024 - Dec 2024',
+    url: 'https://research.csc.ncsu.edu/arglab/',
+    description:
+      'Contributed to an ongoing education-related research project by using Python to analyze student data, and improved the efficiency of the streaming-based Python backend',
+    type: 'experience',
+    tags: ['Python'],
+  },
+  // others
+  {
+    name: 'President of NC State App Development Club',
+    url: 'https://appdevncsu.notion.site/',
+    description:
+      'Currently the president of the mobile app development club at NC State',
     type: 'other',
-    tags: ['Tech C', 'Tech A'],
+    tags: ['TypeScript', 'React Native'],
   },
 ]
 
-export const tags = ['Tech A', 'Tech B', 'Tech C']
+export const tags = [
+  'TypeScript',
+  'React',
+  'Python',
+  'AWS',
+  'Go',
+  'Rust',
+  'Scala',
+  'React Native',
+  'Next.js',
+  'Tailwindcss',
+  'Kubernetes',
+  'Docker',
+  'Java',
+  'Spring Boot',
+]
