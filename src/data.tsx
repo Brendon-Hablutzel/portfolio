@@ -171,7 +171,7 @@ export const works: Work[] = [
     tags: ['AWS', 'TypeScript'],
   },
   {
-    name: 'Software Development Researcher',
+    name: 'Software Development Researcher @ NC State ArgLab',
     dateRange: 'Jan 2024 - Dec 2024',
     url: 'https://research.csc.ncsu.edu/arglab/',
     description:

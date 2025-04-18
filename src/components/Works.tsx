@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import { motion } from 'motion/react'
 import { fullName, socials, tags, Work, works, WorkType } from '../data'
 import { Link } from 'react-router'
+import useWindowSize from '../hooks/useWindowSize'
+import useScrollPosition from '../hooks/useScrollPosition'
 
 const variants = {
   initial: { opacity: 0 },
@@ -24,7 +26,7 @@ const WorkComponent = ({ work }: { work: Work }) => {
       </div>
       {/* TODO: perhaps tracking-wide */}
       <h3 className="text-gray-600">{work.description}</h3>
-      <div className="flex justify-start gap-2 overflow-x-scroll">
+      <div className="flex justify-start gap-2 overflow-x-scroll max-w-full pb-2">
         {work.tags.map((tag, idx) => (
           <div
             key={idx}
@@ -84,19 +86,25 @@ const WorksComponent = () => {
     return selectedWorks
   }, [selectedTagsSet, searchQuery, selectedType])
 
+  const { width } = useWindowSize()
+
+  const scrollPositionY = useScrollPosition()
+
   return (
     <motion.div
-      className={`flex flex-col items-center min-h-screen w-screen`}
+      className={`flex flex-col items-center min-h-screen w-full`}
       variants={variants}
       initial="initial"
       animate="animate"
       exit="exit"
     >
-      <div className="sticky top-0 p-2 flex justify-between w-full">
+      <div
+        className={`sticky top-0 p-2 px-4 flex justify-between w-full bg-white transition-shadow duration-200 ${scrollPositionY > 0 ? 'shadow-md' : ''}`}
+      >
         <div className="flex items-center">
           {/* <a href="/" className="group transition duration-300"> */}
           <Link to="/">
-            <h2 className="font-medium">{fullName}</h2>
+            <h2 className="text-lg font-medium">{fullName}</h2>
             {/* <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black"></span> */}
           </Link>
         </div>
@@ -106,15 +114,15 @@ const WorksComponent = () => {
               key={idx}
               href={social.url}
               target="_blank"
-              className="text-sm hover:shadow-sm transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
+              className="text-sm sm:text-base hover:shadow-sm transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
             >
-              {social.type}
-              <div className="w-4 h-4">{social.iconComponent}</div>
+              {width > 400 ? social.type : null}
+              <div className="w-5 h-5">{social.iconComponent}</div>
             </a>
           ))}
         </div>
       </div>
-      <div className="w-[90%] max-w-[800px]">
+      <div className="w-[90%] max-w-[800px] mt-5 sm:mt-10">
         <div className="mb-3 bg-white py-4">
           <div className="flex justify-between gap-2 mb-3">
             <input
@@ -135,7 +143,7 @@ const WorksComponent = () => {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="flex justify-start gap-2 overflow-x-scroll pb-5">
+          <div className="flex justify-start gap-2 overflow-x-scroll pb-5 max-w-full">
             {Object.entries(selectedTags).map((tagEntry, idx) => {
               const [tagId, tagSelected] = tagEntry
 
@@ -146,7 +154,7 @@ const WorksComponent = () => {
                 >
                   <input
                     type="checkbox"
-                    className="sr-only"
+                    className="hidden"
                     onChange={() => {
                       setSelectedTags({
                         ...selectedTags,

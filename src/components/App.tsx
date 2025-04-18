@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { currentPositions, fullName, socials } from '../data'
 import { motion } from 'motion/react'
+import useWindowSize from '../hooks/useWindowSize'
 
 const nameVariants = {
   hidden: { opacity: 0 },
@@ -37,10 +38,12 @@ const linkVariants = {
 }
 
 const App = () => {
+  const { width } = useWindowSize()
+
   return (
-    <div className={`h-max-screen w-screen overflow-hidden`}>
-      <div className="p-2 flex flex-col items-center h-[100vh]">
-        <div className="flex flex-col items-center gap-6 mt-[30vh]">
+    <div className="w-screen overflow-hidden">
+      <div className="mt-[30vh] p-2 flex flex-col items-center h-[100%]">
+        <div className="flex flex-col items-center gap-6">
           <motion.h1
             variants={nameVariants}
             initial="hidden"
@@ -80,9 +83,9 @@ const App = () => {
                 target="_blank"
                 key={idx}
                 variants={linkVariants}
-                className="flex items-center gap-2 text-sm md:text-base hover:shadow-md transition-shadow duration-200 select-none text-gray-700 border-[1px] border-black/20 py-2 px-3 rounded-xl"
+                className="flex items-center gap-2 hover:shadow-md transition-shadow duration-200 select-none text-gray-700 border-[1px] border-black/20 py-2 px-3 rounded-xl"
               >
-                {social.type}
+                {width > 400 ? social.type : null}
                 <div className="md:w-6 md:h-6 w-5 h-5">
                   {social.iconComponent}
                 </div>
@@ -91,7 +94,7 @@ const App = () => {
             <motion.div
               key={2}
               variants={linkVariants}
-              className="flex justify-center items-center text-sm md:text-base hover:shadow-lg transition-shadow duration-200 hover:cursor-pointer text-white bg-black rounded-xl font-light"
+              className="flex justify-center items-center hover:shadow-lg transition-shadow duration-200 hover:cursor-pointer text-white bg-black rounded-xl font-light"
             >
               <Link
                 to="/work"
