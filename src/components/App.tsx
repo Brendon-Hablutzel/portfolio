@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div className="w-screen overflow-hidden">
-      <div className="mt-[30vh] p-2 flex flex-col items-center h-[100%]">
+      <div className="mt-[30vh] p-5 flex flex-col items-center h-[100%]">
         <div className="flex flex-col items-center gap-6">
           <motion.h1
             variants={nameVariants}

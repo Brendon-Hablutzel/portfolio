@@ -1,3 +1,3 @@
-# Portfolio Template
+# Portfolio
 
-Template for a personal portfolio with social links and projects/experience.
+A personal portfolio website that includes my projects and experiences, built with React and Tailwindcss.
