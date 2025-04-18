@@ -15,7 +15,7 @@ export const currentPositions: Position[] = [
     url: 'https://csc.ncsu.edu',
   },
   {
-    name: 'SWE Intern @ Lucid',
+    name: 'Incoming SWE Intern @ Lucid',
     url: 'https://lucid.co',
   },
 ]
@@ -146,7 +146,7 @@ export const works: Work[] = [
   {
     name: 'Incoming SWE Intern @ Lucid',
     dateRange: 'Starting May 2025',
-    url: 'https://lucid.go',
+    url: 'https://lucid.co',
     description:
       'Will be working as a software engineering intern at Lucid Software during Summer 2025',
     type: 'experience',
