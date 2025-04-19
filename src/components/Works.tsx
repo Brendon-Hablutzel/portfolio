@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { fullName, socials, tags, Work, works, WorkType } from '../data'
 import { Link } from 'react-router'
 import useWindowSize from '../hooks/useWindowSize'
 import useScrollPosition from '../hooks/useScrollPosition'
+import { useDebounce } from 'use-debounce'
 
 const variants = {
   initial: { opacity: 0 },
@@ -41,14 +42,15 @@ const WorkComponent = ({ work }: { work: Work }) => {
 }
 
 const WorksComponent = () => {
+  // TODO: push queries and other filters into the url as query params
+  const [searchQuery, setSearchQuery] = useState('')
+  const [debouncedSearchQuery] = useDebounce(searchQuery, 200)
+
+  const [selectedType, setSelectedType] = useState<WorkType | ''>('')
+
   const [selectedTags, setSelectedTags] = useState(
     Object.fromEntries(tags.map((tag) => [tag, false]))
   )
-
-  // TODO: push queries and other filters into the url as query params
-  const [searchQuery, setSearchQuery] = useState('')
-
-  const [selectedType, setSelectedType] = useState<WorkType | ''>('')
 
   const selectedTagsSet = useMemo(
     () =>
@@ -74,8 +76,8 @@ const WorksComponent = () => {
       )
     }
 
-    if (searchQuery) {
-      const normalizedSearchQuery = searchQuery.toLowerCase()
+    if (debouncedSearchQuery) {
+      const normalizedSearchQuery = debouncedSearchQuery.toLowerCase().trim()
       selectedWorks = selectedWorks.filter(
         (work) =>
           work.name.toLowerCase().includes(normalizedSearchQuery) ||
@@ -84,7 +86,7 @@ const WorksComponent = () => {
     }
 
     return selectedWorks
-  }, [selectedTagsSet, searchQuery, selectedType])
+  }, [selectedTagsSet, debouncedSearchQuery, selectedType])
 
   const { width } = useWindowSize()
 
@@ -169,12 +171,23 @@ const WorksComponent = () => {
             })}
           </div>
         </div>
-        {selectedWorks.map((work, idx) => (
-          <div key={idx}>
-            <WorkComponent work={work} />
-            <hr className="mb-10 text-gray-300 my-10" />
-          </div>
-        ))}
+        <motion.div layout>
+          <AnimatePresence mode="popLayout">
+            {selectedWorks.map((work) => (
+              <motion.div
+                key={work.name}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.25 }}
+                layout
+              >
+                <WorkComponent work={work} />
+                <hr className="mb-10 text-gray-300 my-10" />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
       <div className="mb-20"></div>
     </motion.div>
