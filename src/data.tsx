@@ -111,7 +111,7 @@ export const works: Work[] = [
     ],
   },
   {
-    name: 'Location-based guessing game for NC State',
+    name: 'NCSUGuessr',
     url: 'https://github.com/NCSU-App-Development-Club/ncsuguessr',
     description:
       'Helped lead a team of 15 to build a geoguessr-inspired mobile game for locations at NC State',
