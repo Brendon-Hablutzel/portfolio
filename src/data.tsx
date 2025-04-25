@@ -98,7 +98,7 @@ export const works: Work[] = [
     name: 'Hermes',
     url: 'https://github.com/Brendon-Hablutzel/hermes',
     description:
-      'A system for monitoring real-time data about infrastructure statuses that includes a live dashboard and integration with Prometheus and Grafana for observing status over time—deployed on Kubernetes',
+      'A system for real-time infrastructure resource monitoring that includes a live dashboard and integration with Prometheus and Grafana—deployed on Kubernetes',
     type: 'project',
     tags: [
       'Go',
