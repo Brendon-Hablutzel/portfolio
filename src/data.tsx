@@ -88,7 +88,7 @@ export const works: Work[] = [
   },
   {
     name: 'Argus',
-    url: 'https://github.com/Brendon-Hablutzel/argus-backend',
+    url: 'https://chromewebstore.google.com/detail/argus/cimaimabdfdmmmoncbjoolchanmmellc',
     description:
       "An event-driven system that ingests data about the user's online habits via a Chrome extension, processes that data with Kafka, stores it in Timescale, and allows the user to view insights about their screen time at a website level via a frontend dashboard",
     type: 'project',
