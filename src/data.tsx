@@ -15,7 +15,7 @@ export const currentPositions: Position[] = [
     url: 'https://csc.ncsu.edu',
   },
   {
-    name: 'SWE Intern @ Lucid',
+    name: 'SWE @ Lucid',
     url: 'https://lucid.co',
   },
 ]
@@ -144,13 +144,22 @@ export const works: Work[] = [
   },
   // experiences
   {
-    name: 'SWE Intern @ Lucid',
-    dateRange: 'May 2025 - Present',
+    name: 'Part-time SWE I @ Lucid',
+    dateRange: 'August 2025 - Present',
     url: 'https://lucid.co',
     description:
-      'Will be working as a software engineering intern at Lucid Software during Summer 2025',
+      'More backend software engineering work',
     type: 'experience',
-    tags: [],
+    tags: ['Scala'],
+  },
+  {
+    name: 'SWE Intern @ Lucid',
+    dateRange: 'May 2025 - August 2025',
+    url: 'https://lucid.co',
+    description:
+      'Backend software engineering work',
+    type: 'experience',
+    tags: ['Scala'],
   },
   {
     name: 'Fullstack Software Engineering Intern @ Epic Hire',
