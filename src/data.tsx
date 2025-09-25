@@ -11,12 +11,12 @@ export interface Position {
 
 export const currentPositions: Position[] = [
   {
-    name: 'CS @ NC State',
-    url: 'https://csc.ncsu.edu',
-  },
-  {
     name: 'SWE @ Lucid',
     url: 'https://lucid.co',
+  },
+  {
+    name: 'CS @ NC State',
+    url: 'https://csc.ncsu.edu',
   },
 ]
 
@@ -58,15 +58,14 @@ export const works: Work[] = [
     name: 'NC State Library Busyness Tracker',
     url: 'https://lib-occupancy.brendonhab.com/',
     description:
-      'An AWS serverless-based system that captures real-time occupancy data for the libraries at NC State, uses that to predict future occupancy, and displays all this data with a React frontend',
+      'Full stack web app for monitoring and predicting occupancy at the NC state libraries',
     type: 'project',
     tags: ['AWS', 'TypeScript', 'React', 'Python', 'Tailwindcss'],
   },
   {
     name: 'Seg UI',
     url: 'https://seg-ui.brendonhab.com/',
-    description:
-      'A full-stack web app that allows users to upload images and have them processed using one of several transformation or analysis modules',
+    description: 'Full stack web app for general asynchronous image processing',
     type: 'project',
     tags: [
       'AWS',
@@ -82,23 +81,21 @@ export const works: Work[] = [
     name: 'Raspberry Pi E-Ink Dashboard',
     url: 'https://github.com/Brendon-Hablutzel/rpi-eink-dashboard',
     description:
-      'Used Python to create an application that fetches data from various sources, generates images to summarize that data, and displays it on an E-ink display via a Raspberry Pi',
+      'Python application that fetches and aggregates data, then renders it on an E-Ink dashboard via a Raspberry Pi',
     type: 'project',
     tags: ['Python'],
   },
   {
     name: 'Argus',
     url: 'https://chromewebstore.google.com/detail/argus/cimaimabdfdmmmoncbjoolchanmmellc',
-    description:
-      "An event-driven system that ingests data about the user's online habits via a Chrome extension, processes that data with Kafka, stores it in Timescale, and allows the user to view insights about their screen time at a website level via a frontend dashboard",
+    description: 'A chrome extension for monitoring website usage',
     type: 'project',
     tags: ['Scala', 'React', 'TypeScript', 'Docker'],
   },
   {
     name: 'Hermes',
     url: 'https://github.com/Brendon-Hablutzel/hermes',
-    description:
-      'A system for real-time infrastructure resource monitoring that includes a live dashboard and integration with Prometheus and Grafana—deployed on Kubernetes',
+    description: 'Full stack web app for real-time infrastructure monitoring',
     type: 'project',
     tags: [
       'Go',
@@ -114,7 +111,7 @@ export const works: Work[] = [
     name: 'NCSUGuessr',
     url: 'https://github.com/NCSU-App-Development-Club/ncsuguessr',
     description:
-      'Helped lead a team of 15 to build a geoguessr-inspired mobile game for locations at NC State',
+      'React Native-based, geoguessr-inspired mobile game for locations at NC State',
     type: 'project',
     tags: ['TypeScript', 'React Native', 'AWS'],
   },
@@ -122,7 +119,7 @@ export const works: Work[] = [
     name: 'Rust Crate for Sonos Speakers',
     url: 'https://crates.io/crates/rusty-sonos',
     description:
-      'Created and published a Rust crate that allows users to directly interact with Sonos speakers via the API they expose to the local network',
+      'Rust crate that allows users to directly interact with Sonos speakers via the API they expose to the local network',
     type: 'project',
     tags: ['Rust'],
   },
@@ -130,7 +127,7 @@ export const works: Work[] = [
     name: 'Rust Crate for wit.ai',
     url: 'https://crates.io/crates/wit_ai_rs',
     description:
-      'Created and published a Rust crate that provides access to the API for wit.ai, a cloud-based NLP service by Meta',
+      'Rust crate that provides access to the API for wit.ai, a cloud-based NLP service by Meta',
     type: 'project',
     tags: ['Rust'],
   },
@@ -138,7 +135,7 @@ export const works: Work[] = [
     name: 'Python Library for NC State Courses',
     url: 'https://pypi.org/project/ncsu-courses/',
     description:
-      "Created and published a Python library that parses NC State's website to provide data about current and past course offerings",
+      "Python library that scrapes NC State's website to provide data about current and past course offerings",
     type: 'project',
     tags: ['Python'],
   },
@@ -147,8 +144,7 @@ export const works: Work[] = [
     name: 'Part-time SWE I @ Lucid',
     dateRange: 'August 2025 - Present',
     url: 'https://lucid.co',
-    description:
-      'More backend software engineering work',
+    description: 'Cleaning up more tech debt on the backend',
     type: 'experience',
     tags: ['Scala'],
   },
@@ -156,8 +152,7 @@ export const works: Work[] = [
     name: 'SWE Intern @ Lucid',
     dateRange: 'May 2025 - August 2025',
     url: 'https://lucid.co',
-    description:
-      'Backend software engineering work',
+    description: 'Worked on cleaning up tech debt on the backend',
     type: 'experience',
     tags: ['Scala'],
   },
@@ -165,8 +160,7 @@ export const works: Work[] = [
     name: 'Fullstack Software Engineering Intern @ Epic Hire',
     dateRange: 'Jan 2025 - Apr 2025',
     url: 'https://epichire.com',
-    description:
-      'Used a variety of frontend and backend technologies to build user-facing features for 10,000+ students and employers',
+    description: 'Worked across the stack to develop user-facing features',
     type: 'experience',
     tags: ['TypeScript', 'React', 'Next.js', 'Java', 'Spring Boot'],
   },
@@ -184,7 +178,7 @@ export const works: Work[] = [
     dateRange: 'Jan 2024 - Dec 2024',
     url: 'https://research.csc.ncsu.edu/arglab/',
     description:
-      'Contributed to an ongoing education-related research project by using Python to analyze student data, and improved the efficiency of the streaming-based Python backend',
+      'Worked on improving performance for the Python backend for a real-time system',
     type: 'experience',
     tags: ['Python'],
   },
@@ -193,7 +187,7 @@ export const works: Work[] = [
     name: 'President of NC State App Development Club',
     url: 'https://appdevncsu.notion.site/',
     description:
-      'Currently the president of the mobile app development club at NC State',
+      'Plan meetings, perform administrative tasks, faciliate deployment of apps by setting up and maintaining infrastructure',
     type: 'other',
     tags: ['TypeScript', 'React Native'],
   },
