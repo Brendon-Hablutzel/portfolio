@@ -63,6 +63,22 @@ export const works: Work[] = [
     tags: ['AWS', 'TypeScript', 'React', 'Python', 'Tailwindcss'],
   },
   {
+    name: 'Rust Crate for Sonos Speakers',
+    url: 'https://crates.io/crates/rusty-sonos',
+    description:
+      'Rust crate that allows users to directly interact with Sonos speakers via the API they expose to the local network',
+    type: 'project',
+    tags: ['Rust'],
+  },
+  {
+    name: 'Tally',
+    url: 'https://tally.brendonhab.com',
+    description:
+      'A dashboard for visualizing and summarizing personal NC State dining plan usage',
+    type: 'project',
+    tags: ['TypeScript', 'React', 'Tailwindcss'],
+  },
+  {
     name: 'Seg UI',
     url: 'https://seg-ui.brendonhab.com/',
     description: 'Full stack web app for general asynchronous image processing',
@@ -115,14 +131,7 @@ export const works: Work[] = [
     type: 'project',
     tags: ['TypeScript', 'React Native', 'AWS'],
   },
-  {
-    name: 'Rust Crate for Sonos Speakers',
-    url: 'https://crates.io/crates/rusty-sonos',
-    description:
-      'Rust crate that allows users to directly interact with Sonos speakers via the API they expose to the local network',
-    type: 'project',
-    tags: ['Rust'],
-  },
+
   {
     name: 'Rust Crate for wit.ai',
     url: 'https://crates.io/crates/wit_ai_rs',
@@ -141,7 +150,7 @@ export const works: Work[] = [
   },
   // experiences
   {
-    name: 'Part-time SWE I @ Lucid',
+    name: 'SWE I @ Lucid',
     dateRange: 'August 2025 - Present',
     url: 'https://lucid.co',
     description: 'Cleaning up more tech debt on the backend',
