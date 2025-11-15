@@ -171,23 +171,23 @@ const WorksComponent = () => {
             })}
           </div>
         </div>
-        <motion.div layout>
-          <AnimatePresence mode="popLayout">
+        <div>
+          <AnimatePresence>
             {selectedWorks.map((work) => (
               <motion.div
                 key={work.name}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.25 }}
                 layout
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                transition={{ duration: 0.3 }}
               >
                 <WorkComponent work={work} />
                 <hr className="mb-10 text-gray-300 my-10" />
               </motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
       <div className="mb-20"></div>
     </motion.div>
