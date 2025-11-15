@@ -41,7 +41,8 @@ export const socials: Social[] = [
   },
 ]
 
-export type WorkType = 'project' | 'experience' | 'other'
+export const workTypes = ['project', 'experience', 'other'] as const
+export type WorkType = (typeof workTypes)[number]
 
 export interface Work {
   name: string
@@ -215,6 +216,4 @@ export const tags = [
   'Tailwindcss',
   'Kubernetes',
   'Docker',
-  'Java',
-  'Spring Boot',
 ]

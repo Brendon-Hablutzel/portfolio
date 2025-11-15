@@ -1,10 +1,19 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { fullName, socials, tags, Work, works, WorkType } from '../data'
+import {
+  fullName,
+  socials,
+  tags,
+  Work,
+  works,
+  WorkType,
+  workTypes,
+} from '../data'
 import { Link } from 'react-router'
 import useWindowSize from '../hooks/useWindowSize'
 import useScrollPosition from '../hooks/useScrollPosition'
 import { useDebounce } from 'use-debounce'
+import { useSearchParams } from 'react-router'
 
 const variants = {
   initial: { opacity: 0 },
@@ -41,16 +50,88 @@ const WorkComponent = ({ work }: { work: Work }) => {
   )
 }
 
+const SEARCH_QUERY_PARAM = 'search'
+const TYPE_QUERY_PARAM = 'type'
+const TAG_QUERY_PARAM = 'tag'
+
 const WorksComponent = () => {
-  // TODO: push queries and other filters into the url as query params
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const updateParams = (updater: (params: URLSearchParams) => void) => {
+    const newParams = new URLSearchParams(searchParams)
+    updater(newParams)
+    newParams.sort()
+    setSearchParams(newParams)
+  }
+
+  const updateSearchParams = (key: string, value: string) =>
+    updateParams((params) => {
+      if (value !== '') {
+        params.set(key, value)
+      } else {
+        params.delete(key)
+      }
+    })
+
+  const setSearchQueryParam = (value: string) =>
+    updateSearchParams(SEARCH_QUERY_PARAM, value)
+
+  const setTypeQueryParam = (value: string) =>
+    updateSearchParams(TYPE_QUERY_PARAM, value)
+
+  const removeTagQueryParam = (valueToRemove: string) => {
+    updateParams((params) => {
+      const newTags = params
+        .getAll(TAG_QUERY_PARAM)
+        .filter((value) => value !== valueToRemove)
+
+      params.delete(TAG_QUERY_PARAM)
+      newTags.forEach((tag) => params.append(TAG_QUERY_PARAM, tag))
+    })
+  }
+
+  const addTagQueryParam = (valueToAdd: string) => {
+    updateParams((params) => {
+      const existingTags = params.getAll(TAG_QUERY_PARAM)
+
+      if (!existingTags.includes(valueToAdd)) {
+        params.append(TAG_QUERY_PARAM, valueToAdd)
+      }
+    })
+  }
+
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get(SEARCH_QUERY_PARAM) ?? ''
+  )
   const [debouncedSearchQuery] = useDebounce(searchQuery, 200)
 
-  const [selectedType, setSelectedType] = useState<WorkType | ''>('')
+  const [selectedType, setSelectedType] = useState<WorkType | ''>(() => {
+    const typeParam = searchParams.get(TYPE_QUERY_PARAM)
+    return typeParam && workTypes.includes(typeParam as WorkType)
+      ? (typeParam as WorkType)
+      : ''
+  })
 
-  const [selectedTags, setSelectedTags] = useState(
-    Object.fromEntries(tags.map((tag) => [tag, false]))
-  )
+  const [selectedTags, setSelectedTags] = useState(() => {
+    const paramTags = searchParams.getAll(TAG_QUERY_PARAM)
+    return Object.fromEntries(tags.map((tag) => [tag, paramTags.includes(tag)]))
+  })
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get(SEARCH_QUERY_PARAM) ?? '')
+
+    const typeParam = searchParams.get(TYPE_QUERY_PARAM)
+    setSelectedType(
+      typeParam && workTypes.includes(typeParam as WorkType)
+        ? (typeParam as WorkType)
+        : ''
+    )
+
+    const paramTags = searchParams.getAll(TAG_QUERY_PARAM)
+    setSelectedTags(
+      Object.fromEntries(tags.map((tag) => [tag, paramTags.includes(tag)]))
+    )
+  }, [searchParams])
 
   const selectedTagsSet = useMemo(
     () =>
@@ -131,13 +212,17 @@ const WorksComponent = () => {
               type="text"
               placeholder="Search"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQueryParam(e.target.value)
+              }}
               className="flex-1 text-base sm:text-lg py-1 px-2 rounded-xl border-[1px] border-black/20 min-w-20"
             />
             <select
               className="text-base sm:text-lg border-[1px] border-black/20 rounded-xl py-1 px-2"
               value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value as WorkType | '')}
+              onChange={(e) => {
+                setTypeQueryParam(e.target.value)
+              }}
             >
               <option value="">All</option>
               <option value="project">Projects</option>
@@ -158,11 +243,14 @@ const WorksComponent = () => {
                     type="checkbox"
                     className="hidden"
                     onChange={() => {
-                      setSelectedTags({
-                        ...selectedTags,
-                        [tagId]:
-                          !selectedTags[tagId as keyof typeof selectedTags],
-                      })
+                      const currentlySelected =
+                        selectedTags[tagId as keyof typeof selectedTags]
+
+                      if (currentlySelected) {
+                        removeTagQueryParam(tagId)
+                      } else {
+                        addTagQueryParam(tagId)
+                      }
                     }}
                   />
                   {tagId}
