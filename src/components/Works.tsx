@@ -4,16 +4,14 @@ import {
   fullName,
   socials,
   tags,
-  Work,
+  type Work,
   works,
-  WorkType,
+  type WorkType,
   workTypes,
 } from '../data'
-import { Link } from 'react-router'
-import useWindowSize from '../hooks/useWindowSize'
 import useScrollPosition from '../hooks/useScrollPosition'
 import { useDebounce } from 'use-debounce'
-import { useSearchParams } from 'react-router'
+import { useSearchParams } from '../hooks/useSearchParams'
 
 const variants = {
   initial: { opacity: 0 },
@@ -36,7 +34,7 @@ const WorkComponent = ({ work }: { work: Work }) => {
       </div>
       {/* TODO: perhaps tracking-wide */}
       <h3 className="text-gray-600">{work.description}</h3>
-      <div className="flex justify-start gap-2 overflow-x-scroll max-w-full pb-2">
+      <div className="flex justify-start gap-2 overflow-x-auto max-w-full pb-2">
         {work.tags.map((tag, idx) => (
           <div
             key={idx}
@@ -54,7 +52,7 @@ const SEARCH_QUERY_PARAM = 'search'
 const TYPE_QUERY_PARAM = 'type'
 const TAG_QUERY_PARAM = 'tag'
 
-const WorksComponent = () => {
+const Works = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const updateParams = (updater: (params: URLSearchParams) => void) => {
@@ -169,8 +167,6 @@ const WorksComponent = () => {
     return selectedWorks
   }, [selectedTagsSet, debouncedSearchQuery, selectedType])
 
-  const { width } = useWindowSize()
-
   const scrollPositionY = useScrollPosition()
 
   return (
@@ -186,10 +182,10 @@ const WorksComponent = () => {
       >
         <div className="flex items-center">
           {/* <a href="/" className="group transition duration-300"> */}
-          <Link to="/">
+          <a href="/">
             <h2 className="text-lg font-medium">{fullName}</h2>
             {/* <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black"></span> */}
-          </Link>
+          </a>
         </div>
         <div className="flex justify-between gap-2">
           {socials.map((social, idx) => (
@@ -199,7 +195,7 @@ const WorksComponent = () => {
               target="_blank"
               className="text-sm sm:text-base hover:shadow-sm transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
             >
-              {width > 400 ? social.type : null}
+              <span className="hidden sm:inline">{social.type}</span>
               <div className="w-5 h-5">{social.iconComponent}</div>
             </a>
           ))}
@@ -230,7 +226,7 @@ const WorksComponent = () => {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="flex justify-start gap-2 overflow-x-scroll pb-5 max-w-full">
+          <div className="flex justify-start gap-2 overflow-x-auto pb-5 max-w-full">
             {Object.entries(selectedTags).map((tagEntry, idx) => {
               const [tagId, tagSelected] = tagEntry
 
@@ -282,4 +278,4 @@ const WorksComponent = () => {
   )
 }
 
-export default WorksComponent
+export default Works

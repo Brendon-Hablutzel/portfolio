@@ -1,4 +1,4 @@
-import { JSX } from 'react'
+import type { JSX } from 'react'
 import GitHub from './svg/GitHub'
 import LinkedIn from './svg/LinkedIn'
 
