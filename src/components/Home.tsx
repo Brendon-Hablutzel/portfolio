@@ -29,7 +29,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsReady(true)
-    }, 200) // TODO: may need to tweak this value
+    }, 250) // TODO: may need to tweak this value
 
     return () => clearTimeout(timer)
   }, [])
