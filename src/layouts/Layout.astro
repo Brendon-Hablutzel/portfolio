@@ -17,7 +17,7 @@ const { title, description } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {description && <meta name="description" content={description} />}
     <title>{title}</title>
-    <ClientRouter />
+    <ClientRouter fallback="none" />
   </head>
   <body>
     <slot />
