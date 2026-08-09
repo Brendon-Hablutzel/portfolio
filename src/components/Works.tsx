@@ -193,7 +193,7 @@ const Works = () => {
               key={idx}
               href={social.url}
               target="_blank"
-              className="text-sm sm:text-base hover:shadow-sm transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border-[1px] border-black/20 py-1 px-2 rounded-xl"
+              className="text-sm sm:text-base hover:shadow-sm transition-shadow duration-200 select-none text-gray-700 flex items-center gap-2 border border-black/20 py-1 px-2 rounded-xl"
             >
               <span className="hidden sm:inline">{social.type}</span>
               <div className="w-5 h-5">{social.iconComponent}</div>
@@ -201,7 +201,7 @@ const Works = () => {
           ))}
         </div>
       </div>
-      <div className="w-[90%] max-w-[800px] mt-5 sm:mt-10">
+      <div className="w-[90%] max-w-200 mt-5 sm:mt-10">
         <div className="mb-3 bg-white py-4">
           <div className="flex justify-between gap-2 mb-3">
             <input
@@ -211,10 +211,10 @@ const Works = () => {
               onChange={(e) => {
                 setSearchQueryParam(e.target.value)
               }}
-              className="flex-1 text-base sm:text-lg py-1 px-2 rounded-xl border-[1px] border-black/20 min-w-20"
+              className="flex-1 text-base sm:text-lg py-1 px-2 rounded-xl border border-black/20 min-w-20"
             />
             <select
-              className="text-base sm:text-lg border-[1px] border-black/20 rounded-xl py-1 px-2"
+              className="text-base sm:text-lg border border-black/20 rounded-xl py-1 px-2"
               value={selectedType}
               onChange={(e) => {
                 setTypeQueryParam(e.target.value)
@@ -233,7 +233,7 @@ const Works = () => {
               return (
                 <label
                   key={idx}
-                  className={`text-sm sm:text-base whitespace-nowrap transition duration-150 ease-in-out ${tagSelected ? 'bg-gray-200  ' : ''} hover:cursor-pointer select-none border-[1px] border-black/20 py-0.5 px-2 rounded-xl`}
+                  className={`text-sm sm:text-base whitespace-nowrap transition duration-150 ease-in-out ${tagSelected ? 'bg-gray-200  ' : ''} hover:cursor-pointer select-none border border-black/20 py-0.5 px-2 rounded-xl`}
                 >
                   <input
                     type="checkbox"

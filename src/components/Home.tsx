@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="w-screen overflow-hidden">
-      <div className="mt-[30vh] p-5 flex flex-col items-center h-[100%]">
+      <div className="mt-[30vh] p-5 flex flex-col items-center h-full">
         <div className="flex flex-col items-center gap-6">
           <motion.h1
             initial={{ opacity: 0 }}
@@ -90,7 +90,7 @@ const Home = () => {
                 target="_blank"
                 key={idx}
                 variants={linkVariants}
-                className="flex items-center gap-2 hover:shadow-md transition-shadow duration-200 select-none text-gray-700 border-[1px] border-black/20 py-2 px-3 rounded-xl"
+                className="flex items-center gap-2 hover:shadow-md transition-shadow duration-200 select-none text-gray-700 border border-black/20 py-2 px-3 rounded-xl"
               >
                 <span className="hidden sm:inline">{social.type}</span>
                 <div className="md:w-6 md:h-6 w-5 h-5">
